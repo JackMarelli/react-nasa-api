@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const Modal = ({ isOpen, closeModal, imageUrl, localImageData }) => {
+const Modal = ({ isOpen, closeModal, imageUrl }) => {
   return (
     <>
       {isOpen && (
@@ -34,21 +34,11 @@ const Modal = ({ isOpen, closeModal, imageUrl, localImageData }) => {
                 </button>
               </div>
               <div className="p-4 md:p-5 space-y-4">
-                {imageUrl ? (
-                  <img
-                    src={imageUrl}
-                    alt="Image"
-                    className="w-full h-auto rounded-lg"
-                  />
-                ) : (
-                  localImageData && (
-                    <img
-                      src={localImageData}
-                      alt="Local Image"
-                      className="w-full h-auto rounded-lg"
-                    />
-                  )
-                )}
+                <img
+                  src={imageUrl}
+                  alt="Image"
+                  className="w-full h-auto max-h-full rounded-lg"
+                />
               </div>
             </div>
           </div>

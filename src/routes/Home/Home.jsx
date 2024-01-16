@@ -28,6 +28,7 @@ export default function Home() {
     "PANCAM",
     "MINITES"
   ];
+  const sols = 4000;
   const [photos, setPhotos] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({
     rovers: "curiosity",
@@ -54,14 +55,13 @@ export default function Home() {
       ...prevSelectedOptions,
       [dropdownId]: selectedOption,
     }));
-
   };
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const res = await api.get(
-          `mars-photos/api/v1/rovers/${selectedOptions.rovers.toLowerCase()}/photos?sol=1000&camera=${selectedOptions.cameras.toLowerCase()}`
+          `mars-photos/api/v1/rovers/${selectedOptions.rovers.toLowerCase()}/photos?sol=300&camera=${selectedOptions.cameras.toLowerCase()}`
         );
         const fetchedPhotos = res.data.photos.map((item) => item.img_src);
         setPhotos(fetchedPhotos);
@@ -114,7 +114,6 @@ export default function Home() {
         isOpen={isModalOpen}
         closeModal={closeModal}
         imageUrl={modalImageUrl}
-        localImageData={localImageSrc}
       />
     </>
   );
